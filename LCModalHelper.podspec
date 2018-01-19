@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
 
   s.author             = { "mlcldh" => "1228225993@qq.com" }
 
-  s.platform     = :ios
   s.platform     = :ios, "6.0"
 
   s.source       = { :git => "https://github.com/mlcldh/LCModalHelper.git", :tag => "0.0.1" }
