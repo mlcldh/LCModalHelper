@@ -11,7 +11,6 @@
 #import "LCModalHeader.h"
 #import "LCModalHelper.h"
 #import "UIView+LCModalHelper.h"
-#import "Masonry.h"
 
 @class LCModalHelper;
 @interface LCModalBaseTransitioning : NSObject<UIViewControllerAnimatedTransitioning>

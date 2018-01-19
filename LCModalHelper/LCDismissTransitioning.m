@@ -7,6 +7,7 @@
 //
 
 #import "LCDismissTransitioning.h"
+#import "Masonry.h"
 
 @implementation LCDismissTransitioning
 

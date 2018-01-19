@@ -7,6 +7,7 @@
 //
 
 #import "LCPresentTransitioning.h"
+#import "Masonry.h"
 
 @interface LCPresentTransitioning ()
 
