@@ -15,8 +15,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/mlcldh/LCModalHelper.git", :tag => "0.0.1" }
   s.source_files = "LCModalHelper"
-  s.frameworks = 'Foundation'
-  s.frameworks = 'UIKit'
+  s.frameworks = 'UIKit', 'Foundation'
 
   s.requires_arc = true
 
