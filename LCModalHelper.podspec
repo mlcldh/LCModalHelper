@@ -11,10 +11,12 @@ Pod::Spec.new do |s|
 
   s.author             = { "mlcldh" => "1228225993@qq.com" }
 
-  s.platform     = :ios, "6.0"
+  s.platform     = :ios, "8.0"
 
   s.source       = { :git => "https://github.com/mlcldh/LCModalHelper.git", :tag => "0.0.1" }
   s.source_files = "LCModalHelper"
+  s.frameworks = 'Foundation'
+  s.frameworks = 'UIKit'
 
   s.requires_arc = true
 
