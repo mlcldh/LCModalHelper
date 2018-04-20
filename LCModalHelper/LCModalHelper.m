@@ -49,9 +49,11 @@
 }
 #pragma mark - UIViewControllerTransitioningDelegate
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    NSLog(@"presentingAnimator");
     return self.presentingAnimator;
 }
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    NSLog(@"dismissingAnimator");
     return self.dismissingAnimator;
 }
 //- (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator {
@@ -61,5 +63,11 @@
 //- (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator {
 //    return nil;
 //}
+- (nullable UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(nullable UIViewController *)presenting sourceViewController:(UIViewController *)source {
+    NSLog(@"presentationController");
+    return nil;
+//    LCPresentationController *pController = [[LCPresentationController alloc]initWithPresentedViewController:presented presentingViewController:presenting];
+//    return pController;
+}
 
 @end

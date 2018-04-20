@@ -67,7 +67,7 @@
     NSString *title = self.titles[indexPath.row];
     LCWebViewController *webVC = [[LCWebViewController alloc]init];
     [webVC el_createPresentationDelegateIfNeeded];
-    webVC.el_presentationDelegate.maskColor = [UIColor colorWithRed:0 green:0 blue:100 alpha:0.5];
+    webVC.el_presentationDelegate.maskColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     if ([title isEqualToString:LCDemo_FromBottomToCenter]) {
         webVC.el_presentationDelegate.presentStartStyle = LCPresentStartStyleFromBottom;
         webVC.el_presentationDelegate.presentShownStyle = LCPresentShownStyleAtCenter;
@@ -109,8 +109,9 @@
         
     }
     [self presentViewController:webVC animated:YES completion:^{
-        
     }];
+//    [self presentViewController:webVC animated:NO completion:^{//调试使用
+//    }];
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

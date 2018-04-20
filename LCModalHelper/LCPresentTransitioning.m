@@ -22,6 +22,9 @@
 }
 #pragma mark - Event
 - (void)tapAction:(UITapGestureRecognizer *)recognizer {
+    if (self.modalHelper.forbidDimissWhenTapBackgroundView) {
+        return;
+    }
     [self.toViewController dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -38,13 +41,13 @@
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     transitionContext.containerView.alpha = 0;
-    self.modalHelper.dimmingView = [[UIView alloc] init];
-    self.modalHelper.dimmingView.backgroundColor = self.modalHelper.maskColor?:[UIColor colorWithWhite:0.5 alpha:0.5];
+    self.modalHelper.backgroundView = [[UIView alloc] init];
+    self.modalHelper.backgroundView.backgroundColor = self.modalHelper.maskColor?:[UIColor colorWithWhite:0.5 alpha:0.5];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
-    [self.modalHelper.dimmingView addGestureRecognizer:tap];
-    [transitionContext.containerView addSubview:self.modalHelper.dimmingView];
+    [self.modalHelper.backgroundView addGestureRecognizer:tap];
+    [transitionContext.containerView addSubview:self.modalHelper.backgroundView];
     //    NSLog(@"%@",transitionContext.containerView.superview);
-    [self.modalHelper.dimmingView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.modalHelper.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(transitionContext.containerView);
     }];
     
@@ -137,8 +140,8 @@
 //- (void)hehea:(id <UIViewControllerContextTransitioning>)transitionContext {
 //    [transitionContext completeTransition:YES];
 //}
-//- (void)animationEnded:(BOOL) transitionCompleted {
-//    
-//}
+- (void)animationEnded:(BOOL) transitionCompleted {
+    
+}
 
 @end

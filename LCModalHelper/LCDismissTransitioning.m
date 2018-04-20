@@ -24,6 +24,20 @@
     [transitionContext.containerView lc_removeConstraintsWithFirstItem:fromView firstAttribute:(NSLayoutAttributeBottom)];
     [transitionContext.containerView lc_removeConstraintsWithFirstItem:fromView firstAttribute:(NSLayoutAttributeLeft)];
     [transitionContext.containerView lc_removeConstraintsWithFirstItem:fromView firstAttribute:(NSLayoutAttributeRight)];
+    if (self.modalHelper.presentShownStyle == LCPresentShownStyleAtCenter) {
+        switch (self.modalHelper.presentStartStyle) {
+            case LCPresentStartStyleFromTop:
+            case LCPresentStartStyleFromBottom:
+                [transitionContext.containerView lc_removeConstraintsWithFirstItem:fromView firstAttribute:(NSLayoutAttributeCenterY)];
+                break;
+            case LCPresentStartStyleFromLeft:
+            case LCPresentStartStyleFromRight:
+                [transitionContext.containerView lc_removeConstraintsWithFirstItem:fromView firstAttribute:(NSLayoutAttributeCenterX)];
+                break;
+            default:
+                break;
+        }
+    }
     [fromView mas_updateConstraints:^(MASConstraintMaker *make) {
         switch (self.modalHelper.presentStartStyle) {
             case LCPresentStartStyleFromTop:
