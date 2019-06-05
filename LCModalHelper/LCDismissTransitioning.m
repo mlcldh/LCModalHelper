@@ -18,6 +18,8 @@
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *fromView = fromViewController.view;
+    UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    [toViewController beginAppearanceTransition:YES animated:YES];
     //    fromView.tintAdjustmentMode = UIViewTintAdjustmentModeDimmed;
     //    fromView.userInteractionEnabled = NO;
     [transitionContext.containerView lc_removeConstraintsWithFirstItem:fromView firstAttribute:(NSLayoutAttributeTop)];
@@ -61,6 +63,7 @@
         [transitionContext.containerView layoutIfNeeded];
     } completion:^(BOOL finished) {
         [fromView removeFromSuperview];
+        [toViewController endAppearanceTransition];
         [transitionContext completeTransition:YES];
     }];
 }

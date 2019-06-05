@@ -40,6 +40,8 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
+    UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    [fromViewController beginAppearanceTransition:NO animated:YES];
     transitionContext.containerView.alpha = 0;
     self.modalHelper.backgroundView = [[UIView alloc] init];
     self.modalHelper.backgroundView.backgroundColor = self.modalHelper.maskColor?:[UIColor colorWithWhite:0.5 alpha:0.5];
@@ -99,6 +101,7 @@
                 break;
         }
     }];
+    
     [transitionContext.containerView layoutIfNeeded];
     [transitionContext.containerView lc_removeConstraintsWithFirstItem:toView firstAttribute:(NSLayoutAttributeTop)];
     [transitionContext.containerView lc_removeConstraintsWithFirstItem:toView firstAttribute:(NSLayoutAttributeBottom)];
@@ -135,6 +138,7 @@
         [transitionContext.containerView layoutIfNeeded];
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
+        [fromViewController endAppearanceTransition];
     }];
 }
 //- (void)hehea:(id <UIViewControllerContextTransitioning>)transitionContext {
